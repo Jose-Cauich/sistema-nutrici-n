@@ -1,5 +1,6 @@
 package Salud.dtos.User;
 
+import Salud.dtos.DireccionDTO;
 import lombok.Data;
 import java.time.LocalDate;
 
@@ -12,7 +13,8 @@ public class UserPerfilPostDTO {
     private String apellidoMaterno;
     private String genero;
     private String telefono;
-    private String direccion;
     private LocalDate fechaNacimiento;
     private Long idRol;
+
+    private DireccionDTO direccion;
 }

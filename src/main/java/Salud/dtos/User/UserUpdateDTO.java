@@ -1,4 +1,5 @@
 package Salud.dtos.User;
+import Salud.dtos.DireccionDTO;
 import lombok.Data;
 
 @Data
@@ -10,4 +11,6 @@ public class UserUpdateDTO {
     private String correo;
     private Long idRol;
     private boolean activo;
+
+    private DireccionDTO direccion;
 }

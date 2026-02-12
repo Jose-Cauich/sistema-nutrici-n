@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @Table(name = "paciente")
 public class PatientEntity {
 
+    //los demas datos los extrae de el registro de user
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdPaciente")
@@ -24,31 +25,6 @@ public class PatientEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdUsuario", unique = true)
     private UserEntity idUsuario;
-
-    @Column(name = "Nombres", nullable = false, columnDefinition = "text")
-    private String nombres;
-
-    @Column(name = "ApellidoPaterno", nullable = false, columnDefinition = "text")
-    private String apellidoPaterno;
-
-    @Column(name = "ApellidoMaterno", columnDefinition = "text")
-    private String apellidoMaterno;
-
-    @Column(name = "FechaNacimiento")
-    private LocalDate fechaNacimiento;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "Genero")
-    private Gender genero;
-
-    @Column(name = "Telefono", length = 10)
-    private String telefono;
-
-    @Column(name = "Correo", columnDefinition = "text")
-    private String correo;
-
-    @Column(name = "Direccion", nullable = false, columnDefinition = "text")
-    private String direccion;
 
     @CreationTimestamp
     @Column(name = "FechaRegistro", updatable = false)

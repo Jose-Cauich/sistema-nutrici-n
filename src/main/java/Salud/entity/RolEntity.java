@@ -1,5 +1,6 @@
 package Salud.entity;
 
+import Salud.enums.NombreRol;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class RolEntity {
     @Column(name = "IdRol")
     private Long idRol;
 
-    @Column(name = "Nombres", columnDefinition = "text")
-    private String nombre;
+    @Column(name = "nombre", columnDefinition = "text")
+    private NombreRol nombreRol ;
 
 }

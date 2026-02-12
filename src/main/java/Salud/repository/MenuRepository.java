@@ -1,8 +1,9 @@
 package Salud.repository;
 
+import Salud.entity.MenuEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MenuRepository extends JpaRepository<MedicalHistoryRepository, Long> {
+public interface MenuRepository extends JpaRepository<MenuEntity, Long> {
 }

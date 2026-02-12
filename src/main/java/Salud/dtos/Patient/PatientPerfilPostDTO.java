@@ -1,5 +1,6 @@
 package Salud.dtos.Patient;
 
+import Salud.dtos.DireccionDTO;
 import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,9 +14,9 @@ public class PatientPerfilPostDTO {
     public String apellidoPaterno;
     public String apellidoMaterno;
     public LocalDate fechaNacimiento;
-    private String genero;
+    private Enum genero;
     private String telefono;
-    private String direccion;
+    private DireccionDTO direccion;
     private Long idNutriologoAsignado;
 }
 

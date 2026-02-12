@@ -45,11 +45,8 @@ public class UserEntity {
     @Column(name = "Telefono", nullable = false, length = 10)
     private String telefono;
 
-    @Column(name = "Direccion", nullable = false, columnDefinition = "text")
-    private String direccion;
-
-    @Column(name = "Contrasena", nullable = false, columnDefinition = "text")
-    private String contrasena;
+    @Column(name = "DireccionUsuario", nullable = false, columnDefinition = "text")
+    private DirectionUserEntity direccion;
 
     @CreationTimestamp
     @Column(name = "FechaRegistro", updatable = false)
@@ -61,5 +58,9 @@ public class UserEntity {
     @OneToOne
     @JoinColumn(name = "IdRol", nullable = false)
     private RolEntity rol;
+
+    @OneToOne
+    @JoinColumn(name = "id_password")
+    private PasswordEntity password;
 
 }

@@ -1,5 +1,6 @@
 package Salud.service;
 
+import Salud.dtos.Patient.PatientPerfilGetDTO;
 import Salud.dtos.Patient.PatientPerfilPostDTO;
 import Salud.dtos.Patient.PatientUpdateDTO;
 import Salud.entity.NutritionistEntity;
@@ -24,9 +25,9 @@ public class ServicePatient {
     NutritionistRepository nutritionistRepository;
 
     /*obtener paciente de la db*/
-    public PatientPerfilPostDTO getPatientDTO(int id) {
+    public PatientPerfilGetDTO getPatientDTO(int id) {
         PatientEntity patient = patientRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient no encontrado"));
-        return MapperPatient.toDto(patient);
+        return MapperPatient.toDtoGet(patient);
 
     }
 
@@ -34,12 +35,13 @@ public class ServicePatient {
     public PatientPerfilPostDTO postPatienlDTO(PatientPerfilPostDTO dto, UserEntity userEntity, NutritionistEntity nutritionistEntity, Gender gender) {
 
         NutritionistEntity nutri = null;
+
         if (dto.getIdNutriologoAsignado() != null) {
-            nutri = (NutritionistEntity) nutritionistRepository.findById(dto.getIdNutriologoAsignado()).orElseThrow();
+           nutritionistRepository.findById(dto.getIdNutriologoAsignado()).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
         }
 
         PatientEntity patient = MapperPatient.toEntity(dto, userEntity, nutritionistEntity, gender);
-        return MapperPatient.toDto(patientRepository.save(patient));
+        return MapperPatient.toDtoPost(patientRepository.save(patient));
 
     }
 
@@ -48,12 +50,6 @@ public class ServicePatient {
     public void updatePatient(int id, PatientUpdateDTO dto) {
 
         PatientEntity entity = patientRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient no encontrado"));
-
-        if (dto == null) {
-            log.info("no se recibio un DTO o un entity en el mapperUpdate");
-            return;
-        }
-
 
         if (dto.getTelefono() != null) {
             entity.setTelefono(dto.getTelefono());
@@ -68,4 +64,6 @@ public class ServicePatient {
             log.info("cambio de estado");
         }
     }
+
+
 }

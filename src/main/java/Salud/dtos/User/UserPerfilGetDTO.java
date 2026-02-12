@@ -1,5 +1,6 @@
 package Salud.dtos.User;
 
+import Salud.dtos.DireccionDTO;
 import lombok.Data;
 import java.time.LocalDateTime;
 
@@ -14,4 +15,6 @@ public class UserPerfilGetDTO {
     private LocalDateTime fechaRegistro;
     private boolean activo;
     private String avatarUrl;
+
+    private DireccionDTO direccion;
 }

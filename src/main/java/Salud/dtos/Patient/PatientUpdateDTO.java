@@ -1,5 +1,6 @@
 package Salud.dtos.Patient;
 
+import Salud.dtos.DireccionDTO;
 import lombok.Data;
 
 @Data
@@ -7,6 +8,6 @@ public class PatientUpdateDTO {
 
     public String telefono;
     public String correo;
-    public String direccion;
+    private DireccionDTO direccion;
     private Boolean activo;
 }

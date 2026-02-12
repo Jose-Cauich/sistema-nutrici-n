@@ -9,10 +9,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "cita")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "cita")
 public class AppointmentEntity {
 
     @Id
@@ -22,15 +22,15 @@ public class AppointmentEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdPaciente", nullable = false)
-    private PatientEntity idPaciente;
+    private PatientEntity Paciente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNutriologo", nullable = false)
-    private NutritionistEntity idNutriologo;
+    private NutritionistEntity Nutriologo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdTipoCita", nullable = false)
-    private AppointmentTypeEntity idTipoCita;
+    private AppointmentTypeEntity TipoCita;
 
     @Column(name = "Fecha", nullable = false)
     private LocalDate fecha;

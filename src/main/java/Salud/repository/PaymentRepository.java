@@ -1,8 +1,9 @@
 package Salud.repository;
 
+import Salud.entity.PaymentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PaymentRepository extends JpaRepository<MedicalHistoryRepository, Long> {
+public interface PaymentRepository extends JpaRepository<PaymentEntity, Long> {
 }
