@@ -2,6 +2,7 @@ package Salud.mapper;
 import Salud.dtos.DireccionDTO;
 import Salud.dtos.Patient.PatientPerfilGetDTO;
 import Salud.dtos.Patient.PatientPerfilPostDTO;
+import Salud.dtos.User.UserUpdateDTO;
 import Salud.entity.NutritionistEntity;
 import Salud.entity.PatientEntity;
 import Salud.entity.UserEntity;
@@ -43,20 +44,20 @@ public class MapperPatient {
         return dto;
     }
 
-    public static PatientPerfilPostDTO toDtoPost(PatientEntity patientEntity) {
+    public static PatientPerfilPostDTO toDtoPost(PatientEntity patientEntity, UserUpdateDTO  userUpdateDTO) {
 
         if (patientEntity == null) {return null;}
 
-        PatientPerfilPostDTO patientPerfilPostDTO = new PatientPerfilPostDTO();
+        UserEntity user = new UserEntity();
 
-        patientPerfilPostDTO.setNombres(patientEntity.getNombres());
-        patientPerfilPostDTO.setApellidoPaterno(patientEntity.getApellidoPaterno());
-        patientPerfilPostDTO.setApellidoMaterno(patientEntity.getApellidoMaterno());
-        patientPerfilPostDTO.setFechaNacimiento(patientEntity.getFechaNacimiento());
-        patientPerfilPostDTO.setGenero(patientEntity.getGenero());
-        patientPerfilPostDTO.setDireccion(patientEntity.getDireccion());
-        patientPerfilPostDTO.setTelefono(patientEntity.getTelefono());
-        patientPerfilPostDTO.setCorreo(patientEntity.getCorreo());
+        user.setNombres(userUpdateDTO.getNombres());
+        user.setApellidoPaterno();
+        user.setApellidoMaterno();
+        user.setFechaNacimiento();
+        user.setGenero();
+        user.setDireccion();
+        user.setTelefono();
+        user.setCorreo();
 
         return patientPerfilPostDTO;
     }
