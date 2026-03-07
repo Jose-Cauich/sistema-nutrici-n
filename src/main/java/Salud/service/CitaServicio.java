@@ -33,10 +33,9 @@ public class CitaServicio {
 
     public CitaGetDTO createAppointment(CitaPostDTO dto) {
 
-        PacientesEntity patient = pacienteRepository.findById(dto.getIdPaciente().intValue()).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
-        NutriologasEntity nutritionist = nutriologaRepository.findById(dto.getIdNutriologo()).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
+        PacientesEntity patient = pacienteRepository.findById(dto.getIdPaciente()).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
+        NutriologasEntity nutritionist = nutriologaRepository.findById(dto.getIdNutriologa()).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
         TipoCitasEntity tipo = tipoCitaRepository.findById(dto.getIdTipoCita()).orElseThrow(() -> new RuntimeException("Tipo de cita no válido"));
-
 
         //creo la cita y la mapeo
         CitasEntity entity = CitaMapper.toEntity(dto, patient, nutritionist, tipo);

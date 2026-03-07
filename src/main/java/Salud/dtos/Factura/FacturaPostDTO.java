@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Data
 public class FacturaPostDTO {
 
-    private Long idPago;
     private String rfc;
     private String razonSocial;
     private String usoCfdi;

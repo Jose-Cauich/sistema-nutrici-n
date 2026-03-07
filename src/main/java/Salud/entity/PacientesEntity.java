@@ -23,7 +23,7 @@ public class PacientesEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNutriologa", nullable = false)
-    private NutriologasEntity idNutriologa;
+    private NutriologasEntity Nutriologa;
 
     @Column(name = "Nombres", nullable = false, columnDefinition = "text")
     public String nombres;
@@ -43,12 +43,6 @@ public class PacientesEntity {
 
     @Column(name = "Correo", nullable = false, unique = true, columnDefinition = "text")
     private String correo;
-
-    /*Relacion con T.Direcciones 1:1
-    ve a busacar la direccion en la tabla "paciente"
-    @OneToOne(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private DireccionesEntity direccion;
-    */
 
     @Column(name = "PasswordHash", unique = true, columnDefinition = "text")
     private String passwordHash;

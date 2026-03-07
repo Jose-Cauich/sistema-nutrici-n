@@ -1,9 +1,17 @@
 package Salud.entity;
 
+import Salud.enums.EstadoCita;
+import Salud.enums.NombreRol;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "empleados")
 public class EmpleadosEntity {
@@ -11,7 +19,7 @@ public class EmpleadosEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdEmpleados")
-    private Integer idEmpleados;
+    private Long idEmpleados;
 
     @Column(name = "Nombres", nullable = false, columnDefinition = "text")
     private String nombres;
@@ -21,6 +29,9 @@ public class EmpleadosEntity {
 
     @Column(name = "ApellidoMaterno", columnDefinition = "text")
     private String apellidoMaterno;
+
+    @Column(name = "FechaNacimiento", updatable = false)
+    private LocalDateTime fechaNacimiento;
 
     @Column(name = "Telefono", length = 10)
     private String telefono;
@@ -41,5 +52,9 @@ public class EmpleadosEntity {
     @Column(name = "Activo", nullable = false)
     private Boolean activo = true;
 
+    //Rol
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Rol", nullable = false)
+    private NombreRol rol;
 
 }

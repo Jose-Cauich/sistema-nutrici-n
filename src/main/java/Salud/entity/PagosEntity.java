@@ -20,7 +20,7 @@ public class PagosEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdPaciente", nullable = false)
-    private PacientesEntity idPaciente;
+    private PacientesEntity Paciente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdCita", nullable = false)
@@ -43,7 +43,7 @@ public class PagosEntity {
     private LocalDateTime fechaPago;
 
     @Column(name = "MetodoPago", nullable = false)
-    private LocalDateTime MetodoPago;
+    private String MetodoPago;
 
 
 }

@@ -1,5 +1,5 @@
 package Salud.dtos.Nutricionista;
-import Salud.dtos.DireccionDTO;
+import Salud.dtos.Direccion.DireccionDTO;
 import lombok.Data;
 import java.time.LocalDate;
 

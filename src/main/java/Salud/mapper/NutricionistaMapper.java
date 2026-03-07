@@ -1,6 +1,6 @@
 package Salud.mapper;
 
-import Salud.dtos.DireccionDTO;
+import Salud.dtos.Direccion.DireccionDTO;
 import Salud.dtos.Nutricionista.NutriologaResponseDTO;
 import Salud.dtos.Nutricionista.NutriologaUpdateDTO;
 import Salud.dtos.Nutricionista.NutriologalRegisterDTO;

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class PagoPostDTO {
-    private String idPago;
+    private Long idPago;
     private Long idPaciente;
     private Long idCita;
     private BigDecimal monto;

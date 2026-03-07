@@ -13,7 +13,7 @@ public class PagoGetDTO {
     private BigDecimal monto;
     private String moneda;
     private String estadoPago;
-    private String stripeRefence;
+    private String stripeReference;
     private LocalDateTime fechaPago;
     private String metodoPago;
 }

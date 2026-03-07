@@ -1,5 +1,5 @@
 package Salud.mapper;
-import Salud.dtos.DireccionDTO;
+import Salud.dtos.Direccion.DireccionDTO;
 import Salud.dtos.Paciente.PacienteRegisterDTO;
 import Salud.dtos.Paciente.PacienteResponseDTO;
 import Salud.dtos.Paciente.PacienteUpdateDTO;
@@ -18,6 +18,8 @@ public class PacienteMapper {
         }
 
         PacienteResponseDTO dto = new PacienteResponseDTO();
+        dto.setIdPaciente(pacientesEntity.getIdPaciente());
+        dto.setIdNutriologa(pacientesEntity.getNutriologa().getIdNutriologa());
         dto.setNombres(pacientesEntity.getNombres());
         dto.setApellidoPaterno(pacientesEntity.getApellidoPaterno());
         dto.setApellidoMaterno(pacientesEntity.getApellidoMaterno());
@@ -32,7 +34,7 @@ public class PacienteMapper {
         return dto;
     }
 
-    public static PacientesEntity toEntity(PacienteRegisterDTO pacienteRegisterDTO) {
+    public static PacientesEntity toEntity(PacienteRegisterDTO pacienteRegisterDTO, NutriologasEntity nutriologa) {
 
 
         if (pacienteRegisterDTO == null) {return null;}
@@ -48,6 +50,9 @@ public class PacienteMapper {
         pacientesEntity.setPasswordHash(pacienteRegisterDTO.getPasswordHash());
         pacientesEntity.setFechaNacimiento(pacienteRegisterDTO.getFechaNacimiento());
         pacientesEntity.setActivo(true);
+
+        //asignar pacientes al registrar
+        pacientesEntity.setNutriologa(nutriologa);
 
         pacientesEntity.setDireccion(DireccionesMapper.toEntity(pacienteRegisterDTO.getDireccion()));
 

@@ -1,4 +1,4 @@
-package Salud.dtos;
+package Salud.dtos.Direccion;
 
 import lombok.Data;
 

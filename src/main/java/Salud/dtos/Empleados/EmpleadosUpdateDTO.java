@@ -1,6 +1,6 @@
-package Salud.Empleados;
+package Salud.dtos.Empleados;
 
-import Salud.dtos.DireccionDTO;
+import Salud.dtos.Direccion.DireccionDTO;
 import lombok.Data;
 
 @Data
@@ -10,6 +10,6 @@ public class EmpleadosUpdateDTO {
     private String apellidoMaterno;
     private String telefono;
     private String correo;
-    private Boolean activo;
     private DireccionDTO direccion;
+    private Boolean activo;
 }

@@ -1,6 +1,6 @@
 package Salud.mapper;
 
-import Salud.dtos.DireccionDTO;
+import Salud.dtos.Direccion.DireccionDTO;
 import Salud.entity.DireccionesEntity;
 
 public class DireccionesMapper {

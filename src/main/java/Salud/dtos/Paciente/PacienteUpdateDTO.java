@@ -1,6 +1,6 @@
 package Salud.dtos.Paciente;
 
-import Salud.dtos.DireccionDTO;
+import Salud.dtos.Direccion.DireccionDTO;
 import lombok.Data;
 
 @Data

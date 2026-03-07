@@ -23,7 +23,7 @@ public class TipoCitasEntity {
     private String descripcion;
 
     @Column(name = "DuracionMinutos", nullable = false)
-    private Integer duracionMinutos;
+    private Long duracionMinutos;
 
     @Column(name = "Costo", nullable = false, precision = 10, scale = 2)
     private BigDecimal costo;

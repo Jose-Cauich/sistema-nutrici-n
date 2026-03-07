@@ -22,7 +22,7 @@ public class FacturasEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdPago", nullable = false)
-    private PagosEntity idPago;
+    private PagosEntity Pago;
 
     @Column(name = "Rfc", length = 13)
     private String rfc;
