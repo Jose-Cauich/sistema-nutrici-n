@@ -4,15 +4,14 @@
 > PROYECTO EN DESARROLLO
 > Este proyecto esta en construcción. Algunas funcionalidades todavía no están implementadas.
  
-→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
-
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
  
 **Descripción**
  
 Sistema de gestión de salud desarrollado con Spring Boot y PostgreSQL. Administra tres tipos de perfiles: Pacientes, Nutriólogas y Personal Administrativo.
 Permite gestionar citas, menús nutricionales, historial clínico, pagos y facturación.
  
-→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
  
 **Tecnologías**
  
@@ -24,8 +23,7 @@ Permite gestionar citas, menús nutricionales, historial clínico, pagos y factu
 - Lombok      
 - Maven         
  
-→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
-
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
 
 **Arquitectura**
  
@@ -39,15 +37,15 @@ El proyecto sigue una arquitectura en capas basada en el patrón MVC extendido:
 - Database
 - DTOs
 
-→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
- 
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→ 
+
 **Decisiones Arquitectónicas**
 
 - Patrón DTO: Los datos sensibles como contraseñas nunca se exponen. Se usan DTOs separados para entrada (Post), salida (Get) y actualización (Update).
 - atrón Mapper: Clases estáticas responsables de convertir entre Entities y DTOs, manteniendo las capas desacopladas.
  
-→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
- 
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→ 
+
 **Estado del Proyecto**
  
 - Base de Datos        (Completado)
@@ -59,7 +57,7 @@ El proyecto sigue una arquitectura en capas basada en el patrón MVC extendido:
 - Seguridad (JWT)      (Pendiente)
 - Integración Stripe   (Pendiente)
  
-→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
+→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→
  
 **Módulos del Sistema**
  
