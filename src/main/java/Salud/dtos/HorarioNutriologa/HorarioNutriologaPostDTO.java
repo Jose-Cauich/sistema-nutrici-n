@@ -10,5 +10,4 @@ public class HorarioNutriologaPostDTO {
     private Integer diaSemana;
     private LocalTime horaInicio;
     private LocalTime horaFin;
-    private LocalTime hora;
 }

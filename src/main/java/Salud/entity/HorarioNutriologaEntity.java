@@ -21,7 +21,7 @@ public class HorarioNutriologaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNutriologa", nullable = false)
-    private NutriologasEntity idNutriologa;
+    private NutriologasEntity nutriologa;
 
     @Column(name = "DiaSemana")
     private Integer diaSemana;
@@ -33,5 +33,5 @@ public class HorarioNutriologaEntity {
     private LocalTime horaFin;
 
     @Column(name = "activo")
-    private String activo;
+    private Boolean activo;
 }

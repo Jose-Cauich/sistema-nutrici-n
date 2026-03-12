@@ -19,12 +19,13 @@ public class MenusEntity {
     @Column(name = "IdMenu")
     private Long idMenu;
 
-    @Column(name = "IdNutriologa")
-    private Long idNutriologa;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IdNutriologa", nullable = false)
+    private NutriologasEntity nutriologa;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdPaciente", nullable = false)
-    private PacientesEntity idPaciente;
+    private PacientesEntity paciente;
 
     @Column(name = "FechaInicio", nullable = false)
     private LocalDate fechaInicio;

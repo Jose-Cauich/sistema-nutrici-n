@@ -55,5 +55,5 @@ public class NutriologasEntity {
     private LocalDateTime fechaRegistro;
 
     @Column(name = "Activo", nullable = false)
-    private Boolean activo = true;
+    private Boolean activo;
 }

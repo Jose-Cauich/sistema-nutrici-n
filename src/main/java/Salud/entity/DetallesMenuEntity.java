@@ -19,11 +19,11 @@ public class DetallesMenuEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdMenu", nullable = false)
-    private MenusEntity idMenu;
+    private MenusEntity menu;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdAlimento", nullable = false)
-    private AlimentosEntity idAlimento;
+    private AlimentosEntity alimento;
 
     @Column(name = "DiaSemana", columnDefinition = "text")
     private String diaSemana;

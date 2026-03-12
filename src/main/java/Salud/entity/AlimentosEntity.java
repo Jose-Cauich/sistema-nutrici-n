@@ -38,5 +38,5 @@ public class AlimentosEntity {
     private String imagenReferencia;
 
     @Column(name = "Disponible")
-    private Boolean disponible = true;
+    private Boolean disponible;
 }

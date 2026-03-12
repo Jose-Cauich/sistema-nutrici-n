@@ -7,7 +7,10 @@ import Salud.dtos.Direccion.DireccionDTO;
 import Salud.entity.DireccionesEntity;
 import Salud.entity.EmpleadosEntity;
 import Salud.entity.RolEntity;
+import Salud.enums.Genero;
 import Salud.enums.NombreRol;
+
+import java.time.LocalDateTime;
 
 public class EmpleadoMapper {
 
@@ -28,7 +31,7 @@ public class EmpleadoMapper {
         return dto;
     }
 
-    public static EmpleadosEntity toEntity(EmpleadosRegisterDTO dto, NombreRol rol) {
+    public static EmpleadosEntity toEntity(EmpleadosRegisterDTO dto, NombreRol rol, Genero genero) {
         if (dto == null) return null;
 
         EmpleadosEntity entity = new EmpleadosEntity();
@@ -39,7 +42,7 @@ public class EmpleadoMapper {
         entity.setCorreo(dto.getCorreo());
         entity.setTelefono(dto.getTelefono());
         entity.setPasswordHash(dto.getPasswordHash());
-        entity.setFechaRegistro(dto.getFechaRegistro());
+        entity.setFechaRegistro(LocalDateTime.now()); //Asignacion de tiempo de hora y fecha del sistema
         entity.setActivo(true);
         entity.setRol(rol);
         //mapper-direccion

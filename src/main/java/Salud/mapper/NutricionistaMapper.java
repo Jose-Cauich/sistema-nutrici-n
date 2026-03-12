@@ -9,6 +9,8 @@ import Salud.entity.NutriologasEntity;
 import Salud.enums.Genero;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
+
 @Slf4j
 public class NutricionistaMapper {
 
@@ -26,6 +28,7 @@ public class NutricionistaMapper {
         dto.setTelefono(entity.getTelefono());
         dto.setCorreo(entity.getCorreo());
         dto.setFechaRegistro(entity.getFechaRegistro());
+
 
         //llamada a otro mapper
         dto.setDireccion(DireccionesMapper.toDto(entity.getDireccion()));
@@ -49,6 +52,7 @@ public class NutricionistaMapper {
         entity.setCorreo(dto.getCorreo());
         entity.setActivo(true);
         entity.setPasswordHash(dto.getPasswordHash());
+        entity.setFechaRegistro(LocalDateTime.now()); //asignacion de hora
 
         //llamada a otro mapper
         entity.setDireccion(DireccionesMapper.toEntity(dto.getDireccion()));

@@ -23,7 +23,7 @@ public class PacientesEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNutriologa", nullable = false)
-    private NutriologasEntity Nutriologa;
+    private NutriologasEntity nutriologa;
 
     @Column(name = "Nombres", nullable = false, columnDefinition = "text")
     public String nombres;
@@ -60,6 +60,6 @@ public class PacientesEntity {
     private LocalDateTime fechaRegistro;
 
     @Column(name = "Activo", nullable = false)
-    private boolean activo = true;
+    private boolean activo;
 
 }

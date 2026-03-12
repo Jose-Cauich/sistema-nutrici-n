@@ -3,8 +3,11 @@ package Salud.service;
 import Salud.dtos.Paciente.PacienteRegisterDTO;
 import Salud.dtos.Paciente.PacienteResponseDTO;
 import Salud.dtos.Paciente.PacienteUpdateDTO;
+import Salud.entity.NutriologasEntity;
 import Salud.entity.PacientesEntity;
+import Salud.enums.Genero;
 import Salud.mapper.PacienteMapper;
+import Salud.repository.NutriologaRepository;
 import Salud.repository.PacienteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +20,21 @@ public class PacienteServicio {
 
     @Autowired
     PacienteRepository pacienteRepository;
+    @Autowired
+    NutriologaRepository nutriologaRepository;
+
 
     public PacienteResponseDTO obtenerPaciente(Long id) {
         PacientesEntity patient = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         return PacienteMapper.toDtoGet(patient);
-
     }
 
     public PacienteResponseDTO insertarPaciente(PacienteRegisterDTO dto) {
 
-        PacientesEntity paciente = PacienteMapper.toEntity(dto);
+        NutriologasEntity nutriologasEntity = nutriologaRepository.findById(dto.getIdNutriologa()).orElseThrow(()->new RuntimeException("Nutrióloga no encontrada"));
+        Genero genero = dto.getGenero();
+
+        PacientesEntity paciente = PacienteMapper.toEntity(dto, nutriologasEntity, genero);
         PacientesEntity NuevoRegistro = pacienteRepository.save(paciente);
         return PacienteMapper.toDtoGet(NuevoRegistro);
     }

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class HistorialMedicoGetDTO {
+    private Long idHistorial;
     private Long idPaciente;
     private Long idNutriologa;
     private LocalDateTime fechaConsulta;

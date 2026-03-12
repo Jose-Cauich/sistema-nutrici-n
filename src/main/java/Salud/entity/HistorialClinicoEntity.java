@@ -22,11 +22,11 @@ public class HistorialClinicoEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdPaciente", nullable = false)
-    private PacientesEntity idPaciente;
+    private PacientesEntity paciente;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IdNutriologa", nullable = false)
-    private NutriologasEntity idNutriologa;
+    private NutriologasEntity nutriologa;
 
     @Column(name = "Peso", precision = 5, scale = 2)
     private BigDecimal peso;

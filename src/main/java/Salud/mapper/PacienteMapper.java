@@ -4,7 +4,10 @@ import Salud.dtos.Paciente.PacienteRegisterDTO;
 import Salud.dtos.Paciente.PacienteResponseDTO;
 import Salud.dtos.Paciente.PacienteUpdateDTO;
 import Salud.entity.*;
+import Salud.enums.Genero;
 import lombok.extern.slf4j.Slf4j;
+
+import java.time.LocalDateTime;
 
 
 @Slf4j
@@ -34,7 +37,7 @@ public class PacienteMapper {
         return dto;
     }
 
-    public static PacientesEntity toEntity(PacienteRegisterDTO pacienteRegisterDTO, NutriologasEntity nutriologa) {
+    public static PacientesEntity toEntity(PacienteRegisterDTO pacienteRegisterDTO, NutriologasEntity nutriologa, Genero genero) {
 
 
         if (pacienteRegisterDTO == null) {return null;}
@@ -49,7 +52,11 @@ public class PacienteMapper {
         pacientesEntity.setCorreo(pacienteRegisterDTO.getCorreo());
         pacientesEntity.setPasswordHash(pacienteRegisterDTO.getPasswordHash());
         pacientesEntity.setFechaNacimiento(pacienteRegisterDTO.getFechaNacimiento());
+        pacientesEntity.setFechaRegistro(LocalDateTime.now()); //asigancion de hora y fecha del sistema
         pacientesEntity.setActivo(true);
+        pacientesEntity.setGenero(genero);
+
+        //fecha registro
 
         //asignar pacientes al registrar
         pacientesEntity.setNutriologa(nutriologa);

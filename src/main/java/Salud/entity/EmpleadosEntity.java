@@ -50,7 +50,7 @@ public class EmpleadosEntity {
     private LocalDateTime fechaRegistro;
 
     @Column(name = "Activo", nullable = false)
-    private Boolean activo = true;
+    private Boolean activo;
 
     //Rol
     @Enumerated(EnumType.STRING)
