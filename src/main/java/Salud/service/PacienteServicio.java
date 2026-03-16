@@ -30,12 +30,12 @@ public class PacienteServicio {
     }
 
     public PacienteResponseDTO insertarPaciente(PacienteRegisterDTO dto) {
-
         //objetos-relación
         NutriologasEntity nutriologasEntity = nutriologaRepository.findById(dto.getIdNutriologa()).orElseThrow(()->new RuntimeException("Nutrióloga no encontrada"));
         Genero genero = dto.getGenero();
 
         PacientesEntity NuevoPaciente = PacienteMapper.toEntity(dto, nutriologasEntity, genero);
+        log.info("Paciente registrado con éxito.");
         return PacienteMapper.toDtoGet(pacienteRepository.save(NuevoPaciente));
     }
 
@@ -45,9 +45,7 @@ public class PacienteServicio {
         PacientesEntity entity = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient no encontrado"));
         PacienteMapper.updatePaciente(dto, entity);
         //usando el @transaccional ya no uso el save "Dirty checking"
-
     }
-
 
     //@PathVariable
     @Transactional
@@ -56,7 +54,6 @@ public class PacienteServicio {
         PacientesEntity pacientesEntity = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         pacientesEntity.setActivo(false);
         log.info("Paciente con ID {} desactivado", id);
-
     }
 
 

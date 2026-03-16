@@ -4,6 +4,7 @@ import Salud.dtos.Alimento.AlimentoGetDTO;
 import Salud.dtos.Alimento.AlimentoPostDTO;
 import Salud.dtos.Alimento.AlimentoUpdateDTO;
 import Salud.entity.AlimentosEntity;
+import org.springframework.stereotype.Service;
 
 public class AlimentoMapper {
 

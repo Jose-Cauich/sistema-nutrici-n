@@ -10,7 +10,7 @@ import Salud.entity.PacientesEntity;
 import Salud.enums.EstadoCita;
 import Salud.enums.EstadoPago;
 import jakarta.validation.constraints.Null;
-
+import org.springframework.stereotype.Service;
 
 public class CitaMapper {
 

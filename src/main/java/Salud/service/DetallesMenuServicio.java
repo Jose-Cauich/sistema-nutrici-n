@@ -20,12 +20,21 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class DetallesMenuServicio {
+
+
+    // //Inyeccción de dependencias por constructor manual
 
     private final DetalleMenuRepository detallesMenuRepository;
     private final MenuRepository menuRepository;
     private final AlimentoRepository alimentoRepository;
+
+        public DetallesMenuServicio (DetalleMenuRepository detallesMenuRepository,  MenuRepository menuRepository, AlimentoRepository alimentoRepository){
+        this.detallesMenuRepository =  detallesMenuRepository;
+        this.menuRepository = menuRepository;
+        this.alimentoRepository = alimentoRepository;
+    }
+
 
     public List<DetallesMenuGetDTO> obtenerTodos() {
         return detallesMenuRepository.findAll().stream().map(DetallesMenuMapper::toDto).collect(Collectors.toList());
@@ -45,6 +54,8 @@ public class DetallesMenuServicio {
         AlimentosEntity alimento = alimentoRepository.findById(dto.getIdAlimento()).orElseThrow(() -> new RuntimeException("Alimento no encontrado con ID: " + dto.getIdAlimento()));
 
         DetallesMenuEntity nuevoDetalle = DetallesMenuMapper.toEntity(dto, menu, alimento);
+        log.info("Detalle guardado con éxito");
+
         return DetallesMenuMapper.toDto(detallesMenuRepository.save(nuevoDetalle));
     }
 

@@ -5,8 +5,12 @@ import Salud.dtos.Pago.PagoPostDTO;
 import Salud.entity.*;
 import Salud.mapper.PagoMapper;
 import Salud.repository.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Slf4j
+@Service
 public class PagoServicio {
 
     @Autowired
@@ -22,15 +26,12 @@ public class PagoServicio {
     }
 
     public PagoGetDTO insertarPago(PagoPostDTO dto) {
-
         if(dto != null){}
 
         PacientesEntity pacientes = pacienteRepository.findById(dto.getIdPaciente()).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         CitasEntity tipo = CitaRepository.findById(dto.getIdCita()).orElseThrow(() -> new RuntimeException("No se encontro la cita"));
-
         PagosEntity nuevoPago = PagoMapper.toEntity(dto, pacientes, tipo);
-
+        log.info("Pago registrado con éxito.");
         return PagoMapper.toDto(pagoRepository.save(nuevoPago));
-
     }
 }

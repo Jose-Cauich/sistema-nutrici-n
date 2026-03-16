@@ -50,7 +50,10 @@ public class CitaServicio {
         TipoCitasEntity tipo = tipoCitaRepository.findById(dto.getIdTipoCita()).orElseThrow(() -> new RuntimeException("Tipo de cita no válido"));
 
         CitasEntity entity = CitaMapper.toEntity(dto, patient, nutritionist, tipo);
+        log.info("Cita registrada con éxito");
+
         return CitaMapper.toDto(CitaRepository.save(entity));
+
     }
 
     @Transactional

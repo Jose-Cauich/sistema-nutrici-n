@@ -10,10 +10,14 @@ import Salud.mapper.CitaMapper;
 import Salud.mapper.EmpleadoMapper;
 import Salud.repository.EmpleadosRepository;
 import Salud.repository.RolRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Slf4j
+@Service
 public class EmpleadoServicio {
 
     @Autowired
@@ -34,6 +38,7 @@ public class EmpleadoServicio {
 
         RolEntity rol = rolRepository.findByNombre(dto.getNombres()).orElseThrow(() -> new RuntimeException("Rol no encontrado"));
         EmpleadosEntity nuevoEmpleado = EmpleadoMapper.toEntity(dto, rol);
+        log.info("Empleado guardado con éxito");
         return EmpleadoMapper.toDtoGet(empleadoRepository.save(nuevoEmpleado));
 
     }

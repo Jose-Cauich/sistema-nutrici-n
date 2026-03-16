@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HistorialClinicoServicio {
 
+    //Inyeccción de dependencias por Lombok
     private final HistorialClinicoRepository historialRepository;
     private final PacienteRepository pacienteRepository;
     private final NutriologaRepository nutriologaRepository;
@@ -45,6 +46,7 @@ public class HistorialClinicoServicio {
         NutriologasEntity nutriologa = nutriologaRepository.findById(dto.getIdNutriologa()).orElseThrow(() -> new RuntimeException("Nutrióloga no encontrada con ID: " + dto.getIdNutriologa()));
 
         HistorialClinicoEntity nuevoHistorial = HistorialClinicoMapper.toEntity(dto, paciente, nutriologa);
+        log.info("Historial médico generado con éxito");
         return HistorialClinicoMapper.toDto(historialRepository.save(nuevoHistorial));
     }
 

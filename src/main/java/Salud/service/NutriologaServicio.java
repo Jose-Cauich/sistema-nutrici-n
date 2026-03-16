@@ -21,7 +21,6 @@ public class NutriologaServicio {
     @Autowired
     NutriologaRepository nutriologaRepository;
 
-
     public NutriologaResponseDTO obtenerPorId(Long id) {
 
         NutriologasEntity nutricionista= nutriologaRepository.findById(id).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
@@ -30,6 +29,7 @@ public class NutriologaServicio {
 
     public NutriologaResponseDTO insertarNutricionista(NutriologalRegisterDTO dto, Genero genero) {
         NutriologasEntity nuevaNutriologa = NutricionistaMapper.toEntity(dto, genero);
+        log.info("Nutrióloga Registrada con éxito.");
         return NutricionistaMapper.toGetDto(nutriologaRepository.save(nuevaNutriologa));
     }
 

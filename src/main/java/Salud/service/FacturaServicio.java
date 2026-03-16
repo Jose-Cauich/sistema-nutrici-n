@@ -19,18 +19,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class FacturaServicio {
 
+    //Inyeccción de dependencias por Lombok
     private final FacturaRepository facturaRepository;
     private final PagoRepository pagoRepository;
 
     public List<FacturaGetDTO> obtenerTodos() {
-        return facturaRepository.findAll().stream()
-                .map(FacturaMapper::toDto)
-                .collect(Collectors.toList());
+        return facturaRepository.findAll().stream().map(FacturaMapper::toDto).collect(Collectors.toList());
     }
 
     public FacturaGetDTO obtenerPorId(Long id) {
-        FacturasEntity factura = facturaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Factura no encontrada con ID: " + id));
+        FacturasEntity factura = facturaRepository.findById(id).orElseThrow(() -> new RuntimeException("Factura no encontrada con ID: " + id));
         return FacturaMapper.toDto(factura);
     }
 
@@ -41,10 +39,10 @@ public class FacturaServicio {
     }
 
     public FacturaGetDTO insertarFactura(FacturaPostDTO dto, Long idPago) {
-        PagosEntity pago = pagoRepository.findById(idPago)
-                .orElseThrow(() -> new RuntimeException("Pago no encontrado con ID: " + idPago));
-
+        PagosEntity pago = pagoRepository.findById(idPago).orElseThrow(() -> new RuntimeException("Pago no encontrado con ID: " + idPago));
         FacturasEntity nuevaFactura = FacturaMapper.toEntity(dto, pago);
+
+        log.info("Factura guardada con éxito");
         return FacturaMapper.toDto(facturaRepository.save(nuevaFactura));
     }
 }

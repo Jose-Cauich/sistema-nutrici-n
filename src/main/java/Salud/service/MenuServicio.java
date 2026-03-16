@@ -27,13 +27,9 @@ public class MenuServicio {
     private MenuRepository menuRepository;
     @Autowired
     private PacienteRepository pacienteRepository;
-
-    //Inyeccion por constructor
+    @Autowired
     public NutriologaRepository  nutriologaRepository;
 
-    public MenuServicio (NutriologaRepository nutriologaRepository){
-        this.nutriologaRepository = nutriologaRepository;
-    }
 
     //Todos los menus
     public List<MenuGetDTO> obtenerTodos(Long Idpaciente) {
@@ -60,6 +56,7 @@ public class MenuServicio {
         NutriologasEntity nutriologasEntity = nutriologaRepository.findById(menuPostDTO.getIdNutriologa()).orElseThrow(() -> new RuntimeException("Nutrloga no encontrada"));
         MenusEntity menuEntity = MenuMapper.toEntity(menuPostDTO, pacientesEntity, nutriologasEntity);
         MenusEntity nuevomenu = menuRepository.save(menuEntity);
+        log.info("Menú generado con éxito.");
         return MenuMapper.toDto(nuevomenu);
     }
 

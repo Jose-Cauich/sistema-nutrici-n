@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HorarioNutriologaServicio {
 
+    //Inyeccción de dependencias por Lombok
     private final HorarioNutricionistaRepository horarioRepository;
     private final NutriologaRepository nutriologaRepository;
 
@@ -41,6 +42,7 @@ public class HorarioNutriologaServicio {
         NutriologasEntity nutriologa = nutriologaRepository.findById(dto.getIdNutriologo()).orElseThrow(() -> new RuntimeException("Nutrióloga no encontrada con ID: " + dto.getIdNutriologo()));
 
         HorarioNutriologaEntity nuevoHorario = HorarioNutriologaMapper.toEntity(dto, nutriologa);
+        log.info("Horario médico guardado con éxito");
         return HorarioNutriologaMapper.toDto(horarioRepository.save(nuevoHorario));
     }
 
