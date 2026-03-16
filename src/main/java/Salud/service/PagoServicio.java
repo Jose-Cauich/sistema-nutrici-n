@@ -16,12 +16,12 @@ public class PagoServicio {
     @Autowired
     private PacienteRepository pacienteRepository;
 
-    public PagoGetDTO consultaPago(Long idPago){
+    public PagoGetDTO obtenerPorId(Long idPago){
         PagosEntity pago = pagoRepository.findById(idPago).orElseThrow(()->new IllegalArgumentException("El pago no existe"));
         return PagoMapper.toDto(pago);
     }
 
-    public PagoGetDTO nuevoPago(PagoPostDTO dto) {
+    public PagoGetDTO insertarPago(PagoPostDTO dto) {
 
         if(dto != null){}
 

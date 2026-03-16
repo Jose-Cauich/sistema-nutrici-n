@@ -22,13 +22,13 @@ public class NutriologaServicio {
     NutriologaRepository nutriologaRepository;
 
 
-    public NutriologaResponseDTO getById(Long id) {
+    public NutriologaResponseDTO obtenerPorId(Long id) {
 
         NutriologasEntity nutricionista= nutriologaRepository.findById(id).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
         return NutricionistaMapper.toGetDto(nutricionista);
     }
 
-    public NutriologaResponseDTO nuevoNutricionista(NutriologalRegisterDTO dto, Genero genero) {
+    public NutriologaResponseDTO insertarNutricionista(NutriologalRegisterDTO dto, Genero genero) {
         NutriologasEntity nuevaNutriologa = NutricionistaMapper.toEntity(dto, genero);
         return NutricionistaMapper.toGetDto(nutriologaRepository.save(nuevaNutriologa));
     }

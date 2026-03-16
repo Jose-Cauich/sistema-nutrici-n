@@ -13,6 +13,7 @@ public class HorarioNutriologaMapper {
 
         HorarioNutriologaGetDTO dto = new HorarioNutriologaGetDTO();
         dto.setIdNutriologo(entity.getNutriologa().getIdNutriologa());
+        dto.setIdHorario(entity.getIdHorario());
         dto.setDiaSemana(entity.getDiaSemana());
         dto.setHoraInicio(entity.getHoraInicio());
         dto.setHoraFin(entity.getHoraFin());

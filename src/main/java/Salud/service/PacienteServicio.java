@@ -24,7 +24,7 @@ public class PacienteServicio {
     NutriologaRepository nutriologaRepository;
 
 
-    public PacienteResponseDTO obtenerPaciente(Long id) {
+    public PacienteResponseDTO obtenerPorId(Long id) {
         PacientesEntity patient = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         return PacienteMapper.toDtoGet(patient);
     }
@@ -40,7 +40,7 @@ public class PacienteServicio {
     }
 
     @Transactional
-    public void updatePatient(Long id, PacienteUpdateDTO dto) {
+    public void actualizarPaciente(Long id, PacienteUpdateDTO dto) {
 
         PacientesEntity entity = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Patient no encontrado"));
         PacienteMapper.updatePaciente(dto, entity);

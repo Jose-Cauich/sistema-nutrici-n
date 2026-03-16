@@ -6,6 +6,7 @@ import java.time.LocalTime;
 @Data
 public class HorarioNutriologaGetDTO {
     private Long idNutriologo;
+    private Long idHorario;
     private Integer diaSemana;
     private LocalTime horaInicio;
     private LocalTime horaFin;

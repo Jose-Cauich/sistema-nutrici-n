@@ -16,6 +16,7 @@ import Salud.repository.PacienteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,16 +34,16 @@ public class CitaServicio {
     @Autowired
     private TipoCitaRepository tipoCitaRepository;
 
-    public List<CitaGetDTO> TodasCitas(Long pacienteId) {
+    public List<CitaGetDTO> obtenerTodos(Long pacienteId) {
         return CitaRepository.findByPatient_IdPaciente(pacienteId).stream().map(CitaMapper::toDto).collect(Collectors.toList());
     }
 
-    public CitaGetDTO citaPaciente(Long citaId) {
+    public CitaGetDTO obtenerPorId(Long citaId) {
         CitasEntity nuevaCita = CitaRepository.findById(citaId).orElseThrow(() -> new RuntimeException("Cita no encontrada"));
         return CitaMapper.toDto(nuevaCita);
     }
 
-    public CitaGetDTO crearCita(CitaPostDTO dto) {
+    public CitaGetDTO insertarCita(CitaPostDTO dto) {
 
         PacientesEntity patient = pacienteRepository.findById(dto.getIdPaciente()).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         NutriologasEntity nutritionist = nutriologaRepository.findById(dto.getIdNutriologa()).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
@@ -52,7 +53,8 @@ public class CitaServicio {
         return CitaMapper.toDto(CitaRepository.save(entity));
     }
 
-    public void UpdateCita(Long citaId, CitaPutDTO dto) {
+    @Transactional
+    public void actualizarCita(Long citaId, CitaPutDTO dto) {
         CitasEntity cita = CitaRepository.findById(citaId).orElseThrow(() -> new RuntimeException("Cita no encontrada"));
         CitaMapper.toEntity(dto, cita);
     }
