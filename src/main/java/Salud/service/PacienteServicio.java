@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 public class PacienteServicio {
@@ -23,6 +26,9 @@ public class PacienteServicio {
     @Autowired
     NutriologaRepository nutriologaRepository;
 
+    public List<PacienteResponseDTO> obtenerTodos() {
+        return pacienteRepository.findAll().stream().map(PacienteMapper::toDtoGet).collect(Collectors.toList());
+    }
 
     public PacienteResponseDTO obtenerPorId(Long id) {
         PacientesEntity patient = pacienteRepository.findById(id).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));

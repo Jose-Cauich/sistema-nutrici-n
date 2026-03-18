@@ -2,6 +2,7 @@ package Salud.service;
 
 import Salud.dtos.Empleados.EmpleadosRegisterDTO;
 import Salud.dtos.Empleados.EmpleadosResponseDTO;
+import Salud.dtos.Empleados.EmpleadosUpdateDTO;
 import Salud.dtos.Rol.RolRequestDTO;
 import Salud.entity.EmpleadosEntity;
 import Salud.entity.RolEntity;
@@ -13,6 +14,7 @@ import Salud.repository.RolRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,12 +38,25 @@ public class EmpleadoServicio {
 
     public EmpleadosResponseDTO insertarEmpleado(EmpleadosRegisterDTO dto) {
 
-        RolEntity rol = rolRepository.findByNombre(dto.getNombres()).orElseThrow(() -> new RuntimeException("Rol no encontrado"));
+        RolEntity rol = rolRepository.findById(dto.getIdRol()).orElseThrow(() -> new RuntimeException("Rol no encontrado"));
         EmpleadosEntity nuevoEmpleado = EmpleadoMapper.toEntity(dto, rol);
         log.info("Empleado guardado con éxito");
         return EmpleadoMapper.toDtoGet(empleadoRepository.save(nuevoEmpleado));
-
     }
 
+    @Transactional
+    public void actualizarEmpleado(Long id, EmpleadosUpdateDTO dto) {
+        EmpleadosEntity entity = empleadoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con ID: " + id));
+        EmpleadoMapper.updateEntity(dto, entity);
+    }
+
+    @Transactional
+    public void desactivarEmpleado(Long id) {
+        EmpleadosEntity entity = empleadoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con ID: " + id));
+        entity.setActivo(false);
+        log.info("Empleado con ID {} desactivado", id);
+    }
 
 }

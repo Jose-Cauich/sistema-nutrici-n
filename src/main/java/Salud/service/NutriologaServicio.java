@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 public class NutriologaServicio {
@@ -21,13 +24,19 @@ public class NutriologaServicio {
     @Autowired
     NutriologaRepository nutriologaRepository;
 
+    public List<NutriologaResponseDTO> obtenerTodos() {
+        return nutriologaRepository.findAll().stream().map(NutricionistaMapper::toGetDto).collect(Collectors.toList());
+    }
+
     public NutriologaResponseDTO obtenerPorId(Long id) {
 
         NutriologasEntity nutricionista= nutriologaRepository.findById(id).orElseThrow(() -> new RuntimeException("Nutriólogo no encontrado"));
         return NutricionistaMapper.toGetDto(nutricionista);
     }
 
-    public NutriologaResponseDTO insertarNutricionista(NutriologalRegisterDTO dto, Genero genero) {
+    public NutriologaResponseDTO insertarNutricionista(NutriologalRegisterDTO dto) {
+
+        Genero genero = dto.getGenero();
         NutriologasEntity nuevaNutriologa = NutricionistaMapper.toEntity(dto, genero);
         log.info("Nutrióloga Registrada con éxito.");
         return NutricionistaMapper.toGetDto(nutriologaRepository.save(nuevaNutriologa));

@@ -1,5 +1,6 @@
 package Salud.dtos.Nutricionista;
 import Salud.dtos.Direccion.DireccionDTO;
+import Salud.enums.Genero;
 import lombok.Data;
 import java.time.LocalDate;
 
@@ -11,7 +12,7 @@ import java.time.LocalDate;
         private String apellidoMaterno;
         private String cedulaProfesional;
         private LocalDate fechaNacimiento;
-        private String genero;
+        private Genero genero;
         private String telefono;
         private String correo;
         private String passwordHash;
