@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 
 public class AlimentoServicio {
 
-    @Autowired
     private final AlimentoRepository alimentoRepository;
 
     public List<AlimentoGetDTO> obtenerTodos() {

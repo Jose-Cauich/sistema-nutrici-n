@@ -32,7 +32,7 @@ public class MenuServicio {
 
 
     //Todos los menus
-    public List<MenuGetDTO> obtenerTodos(Long Idpaciente) {
+    public List<MenuGetDTO> obtenerTodos() {
         return  menuRepository.findAll().stream().map(MenuMapper::toDto).collect(Collectors.toList());
     }
 
@@ -49,8 +49,6 @@ public class MenuServicio {
     }
 
     public MenuGetDTO insertarMenu(MenuPostDTO menuPostDTO) {
-
-        if (menuPostDTO != null) {}
 
         PacientesEntity pacientesEntity = pacienteRepository.findById(menuPostDTO.getIdPaciente()).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         NutriologasEntity nutriologasEntity = nutriologaRepository.findById(menuPostDTO.getIdNutriologa()).orElseThrow(() -> new RuntimeException("Nutrloga no encontrada"));

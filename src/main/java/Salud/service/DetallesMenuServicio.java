@@ -66,7 +66,7 @@ public class DetallesMenuServicio {
     }
 
     @Transactional
-    public void DesactivarDetalle(Long id) {
+    public void desactivarDetalle(Long id) {
         DetallesMenuEntity entity = detallesMenuRepository.findById(id).orElseThrow(() -> new RuntimeException("Detalle de menú no encontrado con ID: " + id));
         detallesMenuRepository.delete(entity);
         log.info("Detalle de menú con ID {} eliminado", id);

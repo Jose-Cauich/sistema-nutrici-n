@@ -1,5 +1,8 @@
 package Salud.dtos;
 
+import lombok.Data;
+
+@Data
 public class CambioPasswordDTO {
 
     private String passwordActual;

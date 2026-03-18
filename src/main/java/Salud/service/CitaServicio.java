@@ -62,4 +62,9 @@ public class CitaServicio {
         CitaMapper.toEntity(dto, cita);
     }
 
+    @Transactional
+    public void eliminarCita(Long citaId) {
+        CitaRepository.deleteById(citaId);
+    }
+
 }

@@ -26,7 +26,6 @@ public class PagoServicio {
     }
 
     public PagoGetDTO insertarPago(PagoPostDTO dto) {
-        if(dto != null){}
 
         PacientesEntity pacientes = pacienteRepository.findById(dto.getIdPaciente()).orElseThrow(() -> new RuntimeException("Paciente no encontrado"));
         CitasEntity tipo = CitaRepository.findById(dto.getIdCita()).orElseThrow(() -> new RuntimeException("No se encontro la cita"));

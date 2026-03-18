@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class TipoCitasServicio {
 
     //Inyeccion de dependencias con constructor manual
-    private TipoCitaRepository repository;
+    private final TipoCitaRepository repository;
 
     public TipoCitasServicio(TipoCitaRepository repository) {
         this.repository = repository;
